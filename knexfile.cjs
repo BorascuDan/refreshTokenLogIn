@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   client: 'mysql2',
 
@@ -17,12 +19,6 @@ module.exports = {
 
   acquireConnectionTimeout: 10000,
   defaultDateTimePrecision: 3,
-
-  postProcessResponse: (result) => {
-    if (!result) return result;
-    if (Array.isArray(result)) return result.map(convertToCamel);
-    return convertToCamel(result);
-  },
 
   pool: { 
     min: 0,
